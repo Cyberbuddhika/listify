@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="/style.css" />
+    <title>Listify</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="greeting">
+        <h1 class="greeing-h1">Good Morning!</h1>
+      </div>
+      <div class="image-container">
+        <img
+          class="greet-image"
+          src="/images/shine-young-woman-meditating-at-home-1.png"
+          alt="your-image-alt"
+        />
+      </div>
+      <div class="add-icon">
+        <button class="add-button">
+          <img src="/images/icons8-add-67-2.png" alt="your-image-alt" />
+        </button>
+      </div>
+      <div class="delete-icon">
+        <button class="delete-button">
+          <img src="/images/icons8-waste-48.png" alt="your-image-alt" />
+        </button>
+      </div>
+      <div class="overlay hidden">
+        <div class="modal-container">
+          <div class="add-task-modal">
+            <form>
+              <input
+                type="text"
+                id="new-task-input"
+                placeholder="Enter your task"
+                size="50"
+                class="new-task"
+              />
+              <button type="submit" id="add-modal-btn" class="modal-btn">
+                Add
+              </button>
+              <button type="button" id="close-modal-btn" class="modal-btn">
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <h2>My Tasks</h2>
+      <ul class="list" id="task-list"></ul>
+    </div>
+  </body>
+</html>
