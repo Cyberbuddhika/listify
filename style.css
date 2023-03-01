@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Montserrat:ital,wght@0,400;0,700;1,800&display=swap");
 
+/* body styles */
 body {
   background-color: #f1f4f9;
   color: #021e46;
@@ -32,6 +33,8 @@ h2 {
   color: #79808a;
 }
 
+/* greeting styles */
+
 .greeting {
   margin-top: 10px;
   margin-bottom: 5px;
@@ -49,70 +52,7 @@ h2 {
   height: auto;
 }
 
-.add-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.list li {
-  display: flex;
-  align-items: center;
-  border-radius: 40px;
-  background-color: #fff;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-family: "inter";
-  font-size: 0.75rem;
-}
-
-.list li input[type="checkbox"] {
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ccc;
-  outline: none;
-  cursor: pointer;
-}
-
-.list li input[type="checkbox"]:checked {
-  border-color: #2ecc71;
-}
-
-.delete-button {
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  margin-left: 25px;
-  cursor: pointer;
-  display: inline-block;
-  position: fixed;
-  bottom: 5px;
-  right: 20px;
-}
-
-.delete-button img {
-  width: 50px;
-  height: 50px;
-}
-
-.delete-button-clicked img {
-  content: url("/images/icons8-waste.gif");
-}
-
-.strike {
-  text-decoration: line-through;
-}
-
-input[type="checkbox"] {
-  accent-color: #021e46;
-}
+/* task add button styles */
 
 .add-button {
   border: none;
@@ -128,6 +68,10 @@ input[type="checkbox"] {
 }
 
 .add-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   display: inline-block;
   position: fixed;
   top: 250px;
@@ -161,6 +105,74 @@ input[type="checkbox"] {
     transform: scale(1);
   }
 }
+
+/* tasks delete button styles */
+
+.delete-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-left: 25px;
+  cursor: pointer;
+  display: inline-block;
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+}
+
+.delete-button img {
+  width: 50px;
+  height: 50px;
+}
+
+.delete-button-clicked img {
+  content: url("/images/icons8-waste.gif");
+}
+
+/* tasks list styles */
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: "inter";
+  font-size: 0.75rem;
+}
+
+.list li input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.list li input[type="checkbox"]:checked {
+  border-color: #2ecc71;
+}
+
+/* tasks strikethrough style */
+
+.strike {
+  text-decoration: line-through;
+}
+
+/* tasks checkbox style */
+
+input[type="checkbox"] {
+  accent-color: #021e46;
+}
+
+/* Modal container style */
 
 .overlay {
   position: fixed;
@@ -216,13 +228,15 @@ input[type="checkbox"] {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hidden {
-  display: none;
-}
-
 #new-task-input {
   box-shadow: #79808a;
   height: 25px;
   border-width: 0.1px;
   background-color: white;
+}
+
+/* hidden class style */
+
+.hidden {
+  display: none;
 }
