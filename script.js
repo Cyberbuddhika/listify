@@ -1,11 +1,14 @@
 "use strict";
 
-// Updating Greteing message greeting image according to system time
+// Automating Greetings
+
+// Get the greeting message and image container elements from HTML
 const greetingMessage = document.querySelector(".greeing-h1");
 const imageContainer = document.querySelector(".greet-image");
+// Get the current system time
 const now = new Date();
 const currentHour = now.getHours();
-
+// Update the greeting message and image according to the current time
 if (currentHour >= 0 && currentHour < 12) {
   imageContainer.src = "/images/shine-young-woman-meditating-at-home-1.png";
   greetingMessage.textContent = "Good Morning!";
@@ -22,29 +25,29 @@ if (currentHour >= 0 && currentHour < 12) {
   greetingMessage.textContent = "Good Night!";
 }
 
-// showing new task add model when add button clicked
+// Opening and closing new task add model
 
+// Get the modal, close button, and open button elements from HTML
 const modal = document.querySelector(".overlay");
 const btnCloseModal = document.getElementById("close-modal-btn");
 const btnOpenModal = document.querySelector(".add-button");
-
+// Open the modal when the open button is clicked
 const openModal = function () {
   modal.classList.remove("hidden");
 };
-
+// Close the modal when the close button is clicked
 const closeModal = function () {
   modal.classList.add("hidden");
 };
-
+// Change the style of the delete button when it is clicked
 const deleteBtnChange = function () {
   deleteButton.classList.toggle("delete-button-clicked");
 };
-
+// Add event listeners for opening and closing the modal
 btnOpenModal.addEventListener("click", openModal);
 btnCloseModal.addEventListener("click", closeModal);
 
-// closing modal when escape key press
-
+// Close the modal when the escape key is pressed
 document.addEventListener("keydown", function (e) {
   // console.log(e.key);
 
@@ -53,10 +56,12 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Adding new tasks
+
 // Get the task list element from HTML
 const taskList = document.getElementById("task-list");
 
-// Function to add a new task
+// Function to add a new task to the task list
 function addTask(event) {
   // Prevent the form from submitting
   event.preventDefault();
@@ -178,7 +183,7 @@ function deleteCheckedTasks() {
 // Call the displayTasks function on page load
 displayTasks();
 
-// changing normal font to strike when checked in tasks
+// "Displaying tasks as strikethrough font when checked."
 const checkboxes = document.querySelectorAll(".task-checkbox");
 
 checkboxes.forEach((checkbox) => {
