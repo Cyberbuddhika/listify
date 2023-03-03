@@ -9,12 +9,15 @@ const imageContainer = document.querySelector(".greet-image");
 const now = new Date();
 const currentHour = now.getHours();
 // Update the greeting message and image according to the current time
-if (currentHour >= 0 && currentHour < 12) {
+if (currentHour >= 0 && currentHour < 4) {
+  imageContainer.src =
+    "/images/shine-girl-in-a-green-jacket-with-an-orange-scarf-and-hat.png";
+  greetingMessage.textContent = "Still Awake?";
+} else if (currentHour >= 4 && currentHour < 12) {
   imageContainer.src = "/images/shine-young-woman-meditating-at-home-1.png";
   greetingMessage.textContent = "Good Morning!";
 } else if (currentHour >= 12 && currentHour < 16) {
-  imageContainer.src =
-    "/images/shine-hr-manager-is-searching-for-a-resume-of-employee-1.png";
+  imageContainer.src = "/images/shine-girl-writing-in-a-notebook.png";
   greetingMessage.textContent = "Good Afternoon!";
 } else if (currentHour >= 16 && currentHour < 19) {
   imageContainer.src = "/images/shine-friends-drinking-coffee-in-a-cafe.png";
@@ -24,6 +27,27 @@ if (currentHour >= 0 && currentHour < 12) {
     "/images/shine-young-woman-sitting-near-the-fireplace-with-a-cat-1.png";
   greetingMessage.textContent = "Good Night!";
 }
+
+// Get the container for the no tasks message and the image to show when no tasks
+const noTasksContainer = document.querySelector(".no-task-greetings");
+const noTasksImage = document.querySelector(".no-task-greetings img");
+
+// Get the task list element from HTML
+const taskList = document.getElementById("task-list");
+
+// // Function to show/hide the no tasks message
+// function showNoTasksMessage() {
+//   if (taskList.children.length !== 0) {
+//     noTasksContainer.classList.add("hidden");
+//     noTasksImage.classList.add("hidden");
+//   } else {
+//     noTasksContainer.classList.remove("hidden");
+//     noTasksImage.classList.remove("hidden");
+//   }
+// }
+
+// Call the function to check if there are any tasks on page load
+// showNoTasksMessage();
 
 // Opening and closing new task add model
 
@@ -58,8 +82,8 @@ document.addEventListener("keydown", function (e) {
 
 // Adding new tasks
 
-// Get the task list element from HTML
-const taskList = document.getElementById("task-list");
+// // Get the task list element from HTML
+// const taskList = document.getElementById("task-list");
 
 // Function to add a new task to the task list
 function addTask(event) {
@@ -162,7 +186,6 @@ function updateLocalStorage() {
 function deleteCheckedTasks() {
   // Get all the checked checkboxes
   const checkedCheckboxes = document.querySelectorAll(".task-checkbox:checked");
-
   // Loop through the checked checkboxes and remove their parent li element
   checkedCheckboxes.forEach((checkbox) => {
     const taskListItem = checkbox.closest("li");
@@ -192,4 +215,15 @@ checkboxes.forEach((checkbox) => {
     taskListItem.classList.toggle("strike");
     updateLocalStorage();
   });
+});
+
+// Animating delete button by replacing default icon with a gif
+const originalSrc = deleteButton.querySelector("img").src;
+const newSrc = "/images/icons8-waste-cleanbg.gif";
+
+deleteButton.addEventListener("click", () => {
+  deleteButton.querySelector("img").src = newSrc;
+  setTimeout(() => {
+    deleteButton.querySelector("img").src = originalSrc;
+  }, 1000); // change back to original after 2 seconds
 });

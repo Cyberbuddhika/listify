@@ -14,13 +14,37 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
-h1 {
+/* h1 {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 5px;
   font-family: "Montserrat";
   font-weight: 800;
   font-size: 3rem;
+} */
+
+/* Default font size for h1 */
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: "Montserrat";
+  font-weight: 800;
+}
+
+/* Media query for screens larger than 768px */
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Media query for screens larger than 1024px */
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 4rem;
+  }
 }
 
 h2 {
@@ -127,6 +151,13 @@ h2 {
 
 .delete-button-clicked img {
   content: url("/images/icons8-waste.gif");
+}
+
+/* Display message when task list is empty */
+
+.no-task-greetings {
+  text-align: center;
+  padding: 50px;
 }
 
 /* tasks list styles */
