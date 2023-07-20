@@ -1,6 +1,6 @@
 "use strict";
 
-// Automating Greetings
+//----------- Automating Greetings --------------------------------------
 
 // Get the greeting message and image container elements from HTML
 const greetingMessage = document.querySelector(".greeing-h1");
@@ -28,57 +28,69 @@ if (currentHour >= 0 && currentHour < 4) {
   greetingMessage.textContent = "Good Night!";
 }
 
+//---------------------------------------------------------------------------
+
+//----------- Function to show or hide empty tasks message ------------------
+
 // Get the container for the no tasks message and the image to show when no tasks
 const noTasksContainer = document.querySelector(".no-task-greetings");
-const noTasksImage = document.querySelector(".no-task-greetings img");
+// const noTasksImage = document.querySelector(".no-task-greetings img");
 
 // Get the task list element from HTML
 const taskList = document.getElementById("task-list");
 
-// // Function to show/hide the no tasks message
-// function showNoTasksMessage() {
-//   if (taskList.children.length !== 0) {
-//     noTasksContainer.classList.add("hidden");
-//     noTasksImage.classList.add("hidden");
-//   } else {
-//     noTasksContainer.classList.remove("hidden");
-//     noTasksImage.classList.remove("hidden");
-//   }
-// }
+// Function to show/hide the no tasks message
+function showNoTasksMessage() {
+  if (taskList.children.length !== 0) {
+    noTasksContainer.classList.add("hidden");
+    // noTasksImage.classList.add("hidden");
+  } else {
+    noTasksContainer.classList.remove("hidden");
+    // noTasksImage.classList.remove("hidden");
+  }
+}
 
-// Call the function to check if there are any tasks on page load
-// showNoTasksMessage();
+//---------------------------------------------------------------------------------
 
-// Opening and closing new task add model
+//----------- Function to show or hide task input overlay modal ------------------
 
 // Get the modal, close button, and open button elements from HTML
 const modal = document.querySelector(".overlay");
 const btnCloseModal = document.getElementById("close-modal-btn");
 const btnOpenModal = document.querySelector(".add-button");
+
 // Open the modal when the open button is clicked
-const openModal = function () {
+const openModal = function (e) {
+  e.stopPropagation(); // Stop the event from propagating to parent elements
   modal.classList.remove("hidden");
 };
+
 // Close the modal when the close button is clicked
 const closeModal = function () {
   modal.classList.add("hidden");
 };
-// Change the style of the delete button when it is clicked
-const deleteBtnChange = function () {
-  deleteButton.classList.toggle("delete-button-clicked");
-};
-// Add event listeners for opening and closing the modal
-btnOpenModal.addEventListener("click", openModal);
-btnCloseModal.addEventListener("click", closeModal);
 
 // Close the modal when the escape key is pressed
 document.addEventListener("keydown", function (e) {
-  // console.log(e.key);
-
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
   }
 });
+
+// Close the modal when clicked outside the form
+document.addEventListener('click', function(e) {
+   // If the clicked target is the modal itself (outside the form) and the modal is currently visible
+   if (e.target === modal && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
+
+// Add event listeners for opening and closing the modal
+btnOpenModal.addEventListener("click", openModal);
+btnCloseModal.addEventListener("click", closeModal);
+
+//---------------------------------------------------------------------------------
+
 
 // Adding new tasks
 
@@ -113,7 +125,7 @@ function addTask(event) {
     taskListItem.innerHTML = `
         <input type="checkbox" id="${newTask.id}" class="task-checkbox" />
         <label for="${newTask.id}" class="task-text">${newTask.text}</label>
-        <button class="delete-button"><img src="'/images/icons8-waste-48.png'" alt='Delete'></button>
+        <button class="delete-button"><img src="/images/icons8-waste-48.png" alt='Delete'></button>
       `;
     taskList.appendChild(taskListItem);
 
@@ -127,6 +139,7 @@ function addTask(event) {
     // Reset the input field value
     newTaskInput.value = "";
   }
+  showNoTasksMessage()
 }
 
 // Function to delete checked tasks
@@ -141,6 +154,11 @@ function deleteCheckedTasks() {
     updateLocalStorage();
   });
 }
+
+// Change the style of the delete button when it is clicked
+const deleteBtnChange = function () {
+  deleteButton.classList.toggle("delete-button-clicked");
+};
 
 // Add event listener to delete button
 const deleteButton = document.querySelector(".delete-button");
@@ -201,6 +219,9 @@ function deleteCheckedTasks() {
 
   // Update the tasks in local storage
   updateLocalStorage();
+
+  // Call the function to check if there are any tasks on page load
+  showNoTasksMessage();
 }
 
 // Call the displayTasks function on page load
@@ -227,3 +248,6 @@ deleteButton.addEventListener("click", () => {
     deleteButton.querySelector("img").src = originalSrc;
   }, 1000); // change back to original after 2 seconds
 });
+
+// Call the function to check if there are any tasks on page load
+showNoTasksMessage();
