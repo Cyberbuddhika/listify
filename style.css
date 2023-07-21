@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Montserrat:ital,wght@0,400;0,700;1,800&display=swap");
 
+
 /* body styles */
 body {
   background-color: #f1f4f9;
   color: #021e46;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat";
   font-size: 16px;
   margin-left: 1rem;
   padding: 0;
@@ -13,6 +14,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
 }
 /* h1 {
   text-align: center;
@@ -33,6 +35,17 @@ h1 {
   font-weight: 800;
 }
 
+h2 {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 1rem;
+  color: #79808a;
+}
+
+
 /* Media query for screens larger than 768px */
 @media screen and (min-width: 768px) {
   h1 {
@@ -45,17 +58,13 @@ h1 {
   h1 {
     font-size: 4rem;
   }
+
+  h2 {
+    font-size: 2rem;
+  }
 }
 
-h2 {
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-family: "Montserrat";
-  font-weight: 400;
-  font-size: 1rem;
-  color: #79808a;
-}
+
 
 /* greeting styles */
 
@@ -74,6 +83,17 @@ h2 {
 .image-container img {
   max-width: 100%;
   height: auto;
+}
+
+#today {
+  font-weight: bold;
+  margin-bottom: 2px;
+  
+}
+
+#date {
+  font-size: 12px;
+  margin-bottom: 2rem;
 }
 
 /* task add button styles */
@@ -95,15 +115,19 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px;
   display: inline-block;
-  position: fixed;
-  top: 250px;
+  position:sticky; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  top: 350px;
   right: 20px;
   border-radius: 50%;
   background-color: #97b8e7;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   line-height: 50px;
   cursor: pointer;
@@ -139,14 +163,14 @@ h2 {
   margin-left: 25px;
   cursor: pointer;
   display: inline-block;
-  position: fixed;
-  bottom: 5px;
-  right: 20px;
+  position: absolute;
+  top: 100%;
+  left:80%;
 }
 
 .delete-button img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 .delete-button-clicked img {
@@ -221,11 +245,11 @@ input[type="checkbox"] {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 5px;
   border-radius: 1rem;
   z-index: 2;
   display: block; /* initially hidden */
-  width: 80%;
+  width: 100%;
   height: 10%;
   display: flex;
   flex-direction: column;
